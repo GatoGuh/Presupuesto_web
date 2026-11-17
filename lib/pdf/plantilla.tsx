@@ -4,10 +4,11 @@ import { Document, Page, StyleSheet, Text, View, renderToBuffer } from "@react-p
 
 import type { DatosDocumento } from "@/lib/documento";
 
-const TINTA = "#0e1a2b";
-const GRIS = "#5b6577";
-const LINEA = "#d5dae3";
-const ACENTO = "#2d4bff";
+const TINTA = "#161a3a";
+const GRIS = "#5e6483";
+const LINEA = "#c9cddb";
+const ACENTO = "#2343e0";
+const ROSA = "#ff3d8b";
 
 const s = StyleSheet.create({
   pagina: {
@@ -19,7 +20,7 @@ const s = StyleSheet.create({
     color: TINTA,
     lineHeight: 1.45,
   },
-  franja: { position: "absolute", top: 0, left: 0, right: 0, height: 6, backgroundColor: ACENTO },
+  franja: { position: "absolute", top: 0, left: 0, right: 0, height: 6, backgroundColor: ACENTO, borderBottomWidth: 2, borderBottomColor: ROSA },
   cabecera: { flexDirection: "row", justifyContent: "space-between", marginBottom: 28 },
   marca: { fontSize: 11, fontFamily: "Helvetica-Bold", color: ACENTO },
   titulo: { fontSize: 22, fontFamily: "Helvetica-Bold", marginTop: 4 },
@@ -68,7 +69,7 @@ const s = StyleSheet.create({
   totalValor: { fontFamily: "Helvetica-Bold", fontSize: 18 },
   nota: { color: GRIS, fontSize: 8, textAlign: "right", marginTop: 4 },
   vineta: { flexDirection: "row", marginBottom: 4 },
-  punto: { width: 12, color: ACENTO },
+  punto: { width: 12, color: ROSA },
   pie: {
     // A4 = 841,89 pt de alto. Con `bottom` el pie no se dibujaba en esta versión.
     position: "absolute",

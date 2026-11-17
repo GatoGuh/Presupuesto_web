@@ -5,8 +5,11 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-    --font-heading: var(--font-sans);
+    --font-heading: var(--font-display);
     --font-sans: var(--font-sans);
+    --font-display: var(--font-display);
+    --font-serif: var(--font-serif);
+    --font-mono: var(--font-mono);
     --color-sidebar-ring: var(--sidebar-ring);
     --color-sidebar-border: var(--sidebar-border);
     --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -54,6 +57,9 @@
     --color-q-accent: var(--q-accent);
     --color-q-accent-hover: var(--q-accent-hover);
     --color-q-error: var(--q-error);
+    --color-q-pink: var(--q-pink);
+    --color-q-pink-soft: var(--q-pink-soft);
+    --color-q-accent-soft: var(--q-accent-soft);
 }
 
 :root {
@@ -80,7 +86,7 @@
     --chart-3: oklch(0.439 0 0);
     --chart-4: oklch(0.371 0 0);
     --chart-5: oklch(0.269 0 0);
-    --radius: 0.625rem;
+    --radius: 0.15rem;
     --sidebar: oklch(0.985 0 0);
     --sidebar-foreground: oklch(0.145 0 0);
     --sidebar-primary: oklch(0.205 0 0);
@@ -89,15 +95,24 @@
     --sidebar-accent-foreground: oklch(0.205 0 0);
     --sidebar-border: oklch(0.922 0 0);
     --sidebar-ring: oklch(0.708 0 0);
-    --q-ground: #eef1f6;
-    --q-surface: #ffffff;
-    --q-ink: #0e1a2b;
-    --q-muted: #5b6577;
-    --q-line: #d5dae3;
-    --q-dot: #9aa3b5;
-    --q-accent: #2d4bff;
-    --q-accent-hover: #1f39d6;
-    --q-error: #b42318;
+    /* Imprenta riso: papel frío, tinta índigo, azul riso y rosa flúor */
+    --q-ground: #eef0f4;
+    --q-surface: #fbfbfd;
+    --q-ink: #161a3a;
+    --q-muted: #5e6483;
+    --q-line: #c9cddb;
+    --q-dot: #9ca1ba;
+    --q-accent: #2343e0;
+    --q-accent-hover: #1a33b8;
+    --q-accent-soft: #dfe4fb;
+    --q-pink: #ff3d8b;
+    --q-pink-soft: #ffe0ec;
+    --q-error: #c4123f;
+    /* Rampa de tintas del fondo dither (de papel a tinta) */
+    --dither-0: #eef0f4;
+    --dither-1: #d6dcf6;
+    --dither-2: #8b9cf0;
+    --dither-3: #ff8fbb;
 }
 
 .dark {
@@ -132,15 +147,22 @@
     --sidebar-accent-foreground: oklch(0.985 0 0);
     --sidebar-border: oklch(1 0 0 / 10%);
     --sidebar-ring: oklch(0.556 0 0);
-    --q-ground: #0b1220;
-    --q-surface: #131c2e;
-    --q-ink: #e8ecf4;
-    --q-muted: #98a2b6;
-    --q-line: #26324a;
-    --q-dot: #4a5670;
-    --q-accent: #4560ff;
-    --q-accent-hover: #5f77ff;
-    --q-error: #ff8a80;
+    --q-ground: #0e1030;
+    --q-surface: #171a40;
+    --q-ink: #eceef6;
+    --q-muted: #a2a7c6;
+    --q-line: #2e3366;
+    --q-dot: #4b5190;
+    --q-accent: #7088ff;
+    --q-accent-hover: #93a4ff;
+    --q-accent-soft: #1f2660;
+    --q-pink: #ff5c9e;
+    --q-pink-soft: #3a1838;
+    --q-error: #ff7a9c;
+    --dither-0: #0e1030;
+    --dither-1: #181d55;
+    --dither-2: #2a3aa8;
+    --dither-3: #b8327a;
 }
 
 @layer base {
@@ -148,9 +170,23 @@
     @apply border-border outline-ring/50;
     }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-q-ground text-q-ink;
     }
+  ::selection {
+    background: var(--q-pink);
+    color: #fff;
+  }
   html {
     @apply font-sans;
     }
+}
+
+/* Desajuste de registro riso: la segunda tinta asoma desplazada */
+.registro {
+  box-shadow: 6px 6px 0 0 var(--q-pink);
+}
+@media (max-width: 640px) {
+  .registro {
+    box-shadow: 4px 4px 0 0 var(--q-pink);
+  }
 }

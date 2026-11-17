@@ -56,9 +56,9 @@ export function FormularioPresupuesto() {
   }
 
   return (
-    <div className="mx-auto grid w-full max-w-5xl gap-10 px-5 py-12 sm:py-16 lg:grid-cols-[1fr_24rem] lg:gap-16 lg:py-24">
+    <div className="mx-auto grid w-full max-w-5xl gap-10 px-5 py-12 sm:py-16 lg:grid-cols-[1fr_24rem] lg:gap-16 lg:py-16">
       <div>
-        <h1 className="max-w-md text-4xl font-semibold tracking-tight text-balance sm:text-5xl">
+        <h1 className="max-w-md font-display text-4xl leading-[0.95] font-extrabold tracking-[-0.03em] text-balance [font-variation-settings:'wdth'_78] sm:text-6xl">
           ¿Cuánto cuesta tu web?
         </h1>
         <p className="mt-4 max-w-md text-base leading-relaxed text-q-muted">
@@ -69,7 +69,7 @@ export function FormularioPresupuesto() {
         <form onSubmit={enviar} className="mt-10 flex max-w-md flex-col gap-8">
           <fieldset>
             <legend className="mb-3 text-sm font-medium">Tipo de web</legend>
-            <div className="grid grid-cols-2 gap-1 rounded-xl border border-q-line bg-q-surface p-1">
+            <div className="grid grid-cols-2 gap-1 rounded-sm border border-q-line bg-q-surface p-1">
               {[
                 { valor: "landing", texto: "Landing" },
                 { valor: "corporativa", texto: "Corporativa" },
@@ -79,7 +79,7 @@ export function FormularioPresupuesto() {
                   type="button"
                   aria-pressed={tipo === opcion.valor}
                   onClick={() => setTipo(opcion.valor)}
-                  className={`h-10 rounded-lg text-sm font-medium transition-colors ${focus} ${
+                  className={`h-10 rounded-sm text-sm font-medium transition-colors ${focus} ${
                     tipo === opcion.valor
                       ? "bg-q-ink text-q-ground"
                       : "text-q-muted hover:text-q-ink"
@@ -100,12 +100,12 @@ export function FormularioPresupuesto() {
             <label htmlFor="paginas" className="mb-3 block text-sm font-medium">
               Número de páginas
             </label>
-            <div className="flex w-fit items-center rounded-xl border border-q-line bg-q-surface">
+            <div className="flex w-fit items-center rounded-sm border border-q-line bg-q-surface">
               <button
                 type="button"
                 aria-label="Quitar una página"
                 onClick={() => setPaginas((p) => Math.max(1, p - 1))}
-                className={`size-11 rounded-l-xl text-xl text-q-muted hover:text-q-ink ${focus}`}
+                className={`size-11 rounded-l-sm text-xl text-q-muted hover:text-q-ink ${focus}`}
               >
                 −
               </button>
@@ -122,7 +122,7 @@ export function FormularioPresupuesto() {
                 type="button"
                 aria-label="Añadir una página"
                 onClick={() => setPaginas((p) => Math.min(20, p + 1))}
-                className={`size-11 rounded-r-xl text-xl text-q-muted hover:text-q-ink ${focus}`}
+                className={`size-11 rounded-r-sm text-xl text-q-muted hover:text-q-ink ${focus}`}
               >
                 +
               </button>
@@ -150,7 +150,7 @@ export function FormularioPresupuesto() {
             ].map((extra) => (
               <label
                 key={extra.texto}
-                className="flex cursor-pointer items-start gap-3 rounded-xl border border-q-line bg-q-surface p-4 transition-colors has-[:checked]:border-q-accent has-[:checked]:bg-q-accent/5 has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-q-accent"
+                className="flex cursor-pointer items-start gap-3 rounded-sm border border-q-line bg-q-surface p-4 transition-colors has-[:checked]:border-q-accent has-[:checked]:bg-q-accent/5 has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-q-accent"
               >
                 <input
                   type="checkbox"
@@ -172,7 +172,7 @@ export function FormularioPresupuesto() {
             <button
               type="submit"
               disabled={cargando}
-              className={`h-12 w-full rounded-xl bg-q-accent text-base font-medium text-white transition-colors hover:bg-q-accent-hover disabled:opacity-60 ${focus}`}
+              className={`h-12 w-full rounded-sm bg-q-accent text-base font-medium text-white transition-colors hover:bg-q-accent-hover disabled:opacity-60 ${focus}`}
             >
               {cargando ? "Calculando…" : "Calcular presupuesto"}
             </button>
@@ -186,7 +186,7 @@ export function FormularioPresupuesto() {
       </div>
 
       <aside aria-live="polite" className="lg:pt-2">
-        <div className="sticky top-8 overflow-hidden rounded-2xl border border-q-line bg-q-surface">
+        <div className="sticky top-8 overflow-hidden rounded-sm border border-q-line bg-q-surface">
           <div className="h-1.5 bg-q-accent" />
           <div className="p-6">
             <h2 className="text-lg font-semibold tracking-tight">Tu presupuesto</h2>
@@ -210,7 +210,7 @@ export function FormularioPresupuesto() {
                 </dl>
                 <div className="mt-6 flex items-baseline justify-between border-t border-q-ink pt-5">
                   <span className="text-sm font-medium">Total</span>
-                  <span className="text-4xl font-semibold tracking-tight tabular-nums">
+                  <span className="font-display text-4xl font-extrabold tracking-tight tabular-nums">
                     {euros.format(resultado.total)}
                   </span>
                 </div>
